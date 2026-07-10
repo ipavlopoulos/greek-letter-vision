@@ -1,0 +1,20 @@
+{
+  "checkpoint": "/Users/iopa3492/vs/optical-greek-letters/source/runs/resnet_lf_dscl_lr1e-4_bs16/best_resnet_lf_dscl_model.pth",
+  "protocol": "unaugmented train embeddings; test embeddings; notebook Table 2 style",
+  "kmeans_mapped": {
+    "nmi": 0.7662855976371485,
+    "ari": 0.6826283863421035
+  },
+  "kmeans_clusters_unmapped": {
+    "nmi": 0.7635810543660532,
+    "ari": 0.6736750037164337
+  },
+  "spectral": {
+    "nmi": 0.7612910737623576,
+    "ari": 0.6680007333317083
+  },
+  "agglomerative": {
+    "nmi": 0.7591113101336883,
+    "ari": 0.6630208347629261
+  }
+}

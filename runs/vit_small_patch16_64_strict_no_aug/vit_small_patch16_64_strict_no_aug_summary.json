@@ -1,0 +1,265 @@
+{
+  "checkpoint": "runs/vit_small_patch16_64_strict_no_aug/best_vit_small_patch16_64_strict_no_aug.pth",
+  "classes": [
+    "Alpha",
+    "Beta",
+    "Chi",
+    "Delta",
+    "Epsilon",
+    "Eta",
+    "Gamma",
+    "Iota",
+    "Kappa",
+    "Lambda",
+    "Mu",
+    "Nu",
+    "Omega",
+    "Omicron",
+    "Phi",
+    "Pi",
+    "Psi",
+    "Rho",
+    "Sigma",
+    "Tau",
+    "Theta",
+    "Upsilon",
+    "Xi",
+    "Zeta"
+  ],
+  "train_size": 9369,
+  "val_size": 1042,
+  "test_size": 2603,
+  "train_losses": [
+    2.459303359642318,
+    0.8566802366589874,
+    0.4103055954812901,
+    0.226309411090127,
+    0.14939056631296552,
+    0.1115530989150615,
+    0.08947931734865122,
+    0.08832706896094562,
+    0.061382226715529786,
+    0.0774648082789007,
+    0.05100960247686805,
+    0.06911546155651906,
+    0.054184104097829464
+  ],
+  "val_losses": [
+    1.2821731232321194,
+    0.7144352862336127,
+    0.7064613295547421,
+    0.8374397407452113,
+    0.8987383176635185,
+    0.9907183937599701,
+    1.0116093005992173,
+    1.0136209325918537,
+    1.1426997647074189,
+    1.0311273675869557,
+    1.0807097109746109,
+    1.2177669501694663,
+    1.1389638791774666
+  ],
+  "val_accuracies": [
+    0.5978886756238004,
+    0.7821497120921305,
+    0.7763915547024952,
+    0.7629558541266794,
+    0.7581573896353166,
+    0.7648752399232246,
+    0.7677543186180422,
+    0.7715930902111324,
+    0.755278310940499,
+    0.7821497120921305,
+    0.7677543186180422,
+    0.7523992322456814,
+    0.77447216890595
+  ],
+  "test_report": {
+    "Alpha": {
+      "precision": 0.5414364640883977,
+      "recall": 0.7050359712230215,
+      "f1-score": 0.6125,
+      "support": 139.0
+    },
+    "Beta": {
+      "precision": 0.7846153846153846,
+      "recall": 0.7611940298507462,
+      "f1-score": 0.7727272727272727,
+      "support": 67.0
+    },
+    "Chi": {
+      "precision": 0.7525773195876289,
+      "recall": 0.8588235294117647,
+      "f1-score": 0.8021978021978022,
+      "support": 85.0
+    },
+    "Delta": {
+      "precision": 0.7391304347826086,
+      "recall": 0.9026548672566371,
+      "f1-score": 0.8127490039840638,
+      "support": 113.0
+    },
+    "Epsilon": {
+      "precision": 0.7553956834532374,
+      "recall": 0.7608695652173914,
+      "f1-score": 0.7581227436823105,
+      "support": 138.0
+    },
+    "Eta": {
+      "precision": 0.7614678899082569,
+      "recall": 0.6693548387096774,
+      "f1-score": 0.7124463519313304,
+      "support": 124.0
+    },
+    "Gamma": {
+      "precision": 0.7788461538461539,
+      "recall": 0.7714285714285715,
+      "f1-score": 0.7751196172248804,
+      "support": 105.0
+    },
+    "Iota": {
+      "precision": 0.7841726618705036,
+      "recall": 0.7730496453900709,
+      "f1-score": 0.7785714285714286,
+      "support": 141.0
+    },
+    "Kappa": {
+      "precision": 0.8346456692913385,
+      "recall": 0.8346456692913385,
+      "f1-score": 0.8346456692913385,
+      "support": 127.0
+    },
+    "Lambda": {
+      "precision": 0.746031746031746,
+      "recall": 0.4017094017094017,
+      "f1-score": 0.5222222222222223,
+      "support": 117.0
+    },
+    "Mu": {
+      "precision": 0.8878504672897196,
+      "recall": 0.753968253968254,
+      "f1-score": 0.8154506437768241,
+      "support": 126.0
+    },
+    "Nu": {
+      "precision": 0.8074074074074075,
+      "recall": 0.8134328358208955,
+      "f1-score": 0.8104089219330854,
+      "support": 134.0
+    },
+    "Omega": {
+      "precision": 0.6962025316455697,
+      "recall": 0.873015873015873,
+      "f1-score": 0.7746478873239436,
+      "support": 126.0
+    },
+    "Omicron": {
+      "precision": 0.7238805970149254,
+      "recall": 0.7132352941176471,
+      "f1-score": 0.7185185185185186,
+      "support": 136.0
+    },
+    "Phi": {
+      "precision": 0.9259259259259259,
+      "recall": 0.6024096385542169,
+      "f1-score": 0.7299270072992701,
+      "support": 83.0
+    },
+    "Pi": {
+      "precision": 0.7333333333333333,
+      "recall": 0.7795275590551181,
+      "f1-score": 0.7557251908396947,
+      "support": 127.0
+    },
+    "Psi": {
+      "precision": 0.4782608695652174,
+      "recall": 0.6470588235294118,
+      "f1-score": 0.55,
+      "support": 17.0
+    },
+    "Rho": {
+      "precision": 0.8454545454545455,
+      "recall": 0.6992481203007519,
+      "f1-score": 0.7654320987654321,
+      "support": 133.0
+    },
+    "Sigma": {
+      "precision": 0.7134146341463414,
+      "recall": 0.8478260869565217,
+      "f1-score": 0.7748344370860927,
+      "support": 138.0
+    },
+    "Tau": {
+      "precision": 0.7559055118110236,
+      "recall": 0.6906474820143885,
+      "f1-score": 0.7218045112781954,
+      "support": 139.0
+    },
+    "Theta": {
+      "precision": 0.7432432432432432,
+      "recall": 0.6395348837209303,
+      "f1-score": 0.6875,
+      "support": 86.0
+    },
+    "Upsilon": {
+      "precision": 0.7105263157894737,
+      "recall": 0.8120300751879699,
+      "f1-score": 0.7578947368421053,
+      "support": 133.0
+    },
+    "Xi": {
+      "precision": 0.7551020408163265,
+      "recall": 0.7872340425531915,
+      "f1-score": 0.7708333333333334,
+      "support": 47.0
+    },
+    "Zeta": {
+      "precision": 0.5263157894736842,
+      "recall": 0.45454545454545453,
+      "f1-score": 0.4878048780487805,
+      "support": 22.0
+    },
+    "accuracy": 0.746062235881675,
+    "macro avg": {
+      "precision": 0.7408809425163329,
+      "recall": 0.7313533547012185,
+      "f1-score": 0.7292535115365801,
+      "support": 2603.0
+    },
+    "weighted avg": {
+      "precision": 0.7550599665872937,
+      "recall": 0.746062235881675,
+      "f1-score": 0.7440227382782901,
+      "support": 2603.0
+    }
+  },
+  "settings": {
+    "model_name": "vit_small_patch16_224",
+    "display_name": "ViT-16S",
+    "data_dir": "/home/hugo/diachronic-greek-letterforms/data",
+    "output_dir": "runs/vit_small_patch16_64_strict_no_aug",
+    "checkpoint_name": "best_vit_small_patch16_64_strict_no_aug.pth",
+    "summary_name": "vit_small_patch16_64_strict_no_aug_summary.json",
+    "epochs": 100,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "lambda_scl": 0.1,
+    "patience": 10,
+    "num_workers": 2,
+    "seed": 42,
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "image_size": 64,
+    "otsu": false,
+    "no_pretrained": false,
+    "no_standard_augmentation": true,
+    "use_lf": false,
+    "use_dscl": false,
+    "model": "ViT-16S",
+    "pretrained": true,
+    "standard_augmentation": false,
+    "lf_lacuna_augmentation": false,
+    "dscl_similarity_weighting": false,
+    "loss": "cross_entropy"
+  }
+}

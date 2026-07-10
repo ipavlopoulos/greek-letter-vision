@@ -1,0 +1,268 @@
+{
+  "checkpoint": "runs/resnet18_pt_ft_strict_no_aug/best_resnet18_pt_ft_strict_no_aug.pth",
+  "classes": [
+    "Alpha",
+    "Beta",
+    "Chi",
+    "Delta",
+    "Epsilon",
+    "Eta",
+    "Gamma",
+    "Iota",
+    "Kappa",
+    "Lambda",
+    "Mu",
+    "Nu",
+    "Omega",
+    "Omicron",
+    "Phi",
+    "Pi",
+    "Psi",
+    "Rho",
+    "Sigma",
+    "Tau",
+    "Theta",
+    "Upsilon",
+    "Xi",
+    "Zeta"
+  ],
+  "train_size": 9369,
+  "val_size": 1042,
+  "test_size": 2603,
+  "history": {
+    "train_loss": [
+      2.3567200765651477,
+      1.084746456620838,
+      0.7423900621776673,
+      0.5626211113196349,
+      0.4485427201659438,
+      0.3454441561545846,
+      0.26890364882530965,
+      0.21989489826986586,
+      0.12262879248737513,
+      0.07739601426672682,
+      0.05615640773375988,
+      0.04796244737390285,
+      0.03734031910897224,
+      0.036543271723132285
+    ],
+    "val_loss": [
+      1.0650371235872185,
+      0.7214809606162806,
+      0.6855655400128946,
+      0.6712452909889526,
+      0.7239949911360891,
+      0.7667188761202125,
+      0.8295961919463206,
+      0.8809008908148805,
+      0.7304602124358013,
+      0.7511181612007477,
+      0.7502168958691385,
+      0.7786449297555167,
+      0.7405820305166152,
+      0.760951998783119
+    ],
+    "val_accuracy": [
+      0.6689059500959693,
+      0.7600767754318618,
+      0.7927063339731286,
+      0.7994241842610365,
+      0.7936660268714012,
+      0.8109404990403071,
+      0.8032629558541267,
+      0.7946257197696737,
+      0.8320537428023033,
+      0.8205374280230326,
+      0.8253358925143954,
+      0.8339731285988484,
+      0.8339731285988484,
+      0.8378119001919386
+    ]
+  },
+  "test_report": {
+    "Alpha": {
+      "precision": 0.6453900709219859,
+      "recall": 0.6546762589928058,
+      "f1-score": 0.65,
+      "support": 139.0
+    },
+    "Beta": {
+      "precision": 0.9245283018867925,
+      "recall": 0.7313432835820896,
+      "f1-score": 0.8166666666666667,
+      "support": 67.0
+    },
+    "Chi": {
+      "precision": 0.8045977011494253,
+      "recall": 0.8235294117647058,
+      "f1-score": 0.813953488372093,
+      "support": 85.0
+    },
+    "Delta": {
+      "precision": 0.8319327731092437,
+      "recall": 0.8761061946902655,
+      "f1-score": 0.853448275862069,
+      "support": 113.0
+    },
+    "Epsilon": {
+      "precision": 0.7516778523489933,
+      "recall": 0.8115942028985508,
+      "f1-score": 0.7804878048780488,
+      "support": 138.0
+    },
+    "Eta": {
+      "precision": 0.8316831683168316,
+      "recall": 0.6774193548387096,
+      "f1-score": 0.7466666666666667,
+      "support": 124.0
+    },
+    "Gamma": {
+      "precision": 0.7016129032258065,
+      "recall": 0.8285714285714286,
+      "f1-score": 0.759825327510917,
+      "support": 105.0
+    },
+    "Iota": {
+      "precision": 0.7602739726027398,
+      "recall": 0.7872340425531915,
+      "f1-score": 0.7735191637630662,
+      "support": 141.0
+    },
+    "Kappa": {
+      "precision": 0.8345864661654135,
+      "recall": 0.8740157480314961,
+      "f1-score": 0.8538461538461538,
+      "support": 127.0
+    },
+    "Lambda": {
+      "precision": 0.75,
+      "recall": 0.6410256410256411,
+      "f1-score": 0.6912442396313364,
+      "support": 117.0
+    },
+    "Mu": {
+      "precision": 0.8076923076923077,
+      "recall": 0.8333333333333334,
+      "f1-score": 0.8203125,
+      "support": 126.0
+    },
+    "Nu": {
+      "precision": 0.8728813559322034,
+      "recall": 0.7686567164179104,
+      "f1-score": 0.8174603174603174,
+      "support": 134.0
+    },
+    "Omega": {
+      "precision": 0.875,
+      "recall": 0.7777777777777778,
+      "f1-score": 0.8235294117647058,
+      "support": 126.0
+    },
+    "Omicron": {
+      "precision": 0.6589595375722543,
+      "recall": 0.8382352941176471,
+      "f1-score": 0.7378640776699029,
+      "support": 136.0
+    },
+    "Phi": {
+      "precision": 0.8933333333333333,
+      "recall": 0.8072289156626506,
+      "f1-score": 0.8481012658227848,
+      "support": 83.0
+    },
+    "Pi": {
+      "precision": 0.7483443708609272,
+      "recall": 0.889763779527559,
+      "f1-score": 0.8129496402877698,
+      "support": 127.0
+    },
+    "Psi": {
+      "precision": 0.75,
+      "recall": 0.5294117647058824,
+      "f1-score": 0.6206896551724138,
+      "support": 17.0
+    },
+    "Rho": {
+      "precision": 0.7517241379310344,
+      "recall": 0.8195488721804511,
+      "f1-score": 0.7841726618705036,
+      "support": 133.0
+    },
+    "Sigma": {
+      "precision": 0.8389830508474576,
+      "recall": 0.717391304347826,
+      "f1-score": 0.7734375,
+      "support": 138.0
+    },
+    "Tau": {
+      "precision": 0.8074074074074075,
+      "recall": 0.7841726618705036,
+      "f1-score": 0.7956204379562044,
+      "support": 139.0
+    },
+    "Theta": {
+      "precision": 0.6989247311827957,
+      "recall": 0.7558139534883721,
+      "f1-score": 0.7262569832402235,
+      "support": 86.0
+    },
+    "Upsilon": {
+      "precision": 0.8611111111111112,
+      "recall": 0.6992481203007519,
+      "f1-score": 0.7717842323651453,
+      "support": 133.0
+    },
+    "Xi": {
+      "precision": 0.85,
+      "recall": 0.723404255319149,
+      "f1-score": 0.7816091954022989,
+      "support": 47.0
+    },
+    "Zeta": {
+      "precision": 0.475,
+      "recall": 0.8636363636363636,
+      "f1-score": 0.6129032258064516,
+      "support": 22.0
+    },
+    "accuracy": 0.7783326930464848,
+    "macro avg": {
+      "precision": 0.7802351897332526,
+      "recall": 0.7713807783181276,
+      "f1-score": 0.7694312038339891,
+      "support": 2603.0
+    },
+    "weighted avg": {
+      "precision": 0.7872019530190744,
+      "recall": 0.7783326930464848,
+      "f1-score": 0.7788304837370674,
+      "support": 2603.0
+    }
+  },
+  "settings": {
+    "data_dir": "/home/hugo/diachronic-greek-letterforms/data",
+    "output_dir": "runs/resnet18_pt_ft_strict_no_aug",
+    "checkpoint_name": "best_resnet18_pt_ft_strict_no_aug.pth",
+    "summary_name": "resnet18_pt_ft_strict_no_aug_summary.json",
+    "epochs": 100,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "patience": 10,
+    "scheduler_patience": 3,
+    "scheduler_factor": 0.1,
+    "num_workers": 2,
+    "seed": 42,
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "otsu": false,
+    "no_standard_augmentation": true,
+    "no_pretrained": false,
+    "model": "ResNet18-PT+FT",
+    "pretrained": true,
+    "fine_tuned_layers": "all",
+    "loss": "cross_entropy",
+    "standard_augmentation": false,
+    "lf_lacuna_augmentation": false,
+    "dscl_similarity_weighting": false,
+    "standard_scl": false
+  }
+}
