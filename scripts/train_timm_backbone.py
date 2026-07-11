@@ -62,7 +62,7 @@ def set_seed(seed):
         torch.cuda.manual_seed_all(seed)
 
 
-def preprocess_image_2d(image_path, size=(224, 224), otsu=False):
+def preprocess_image_2d(image_path, size=(64, 64), otsu=False):
     img = Image.open(image_path).convert("L")
     img_np = np.array(img)
     if otsu:
@@ -193,7 +193,7 @@ def main():
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--test-size", type=float, default=0.2)
     parser.add_argument("--val-size", type=float, default=0.1)
-    parser.add_argument("--image-size", type=int, default=224)
+    parser.add_argument("--image-size", type=int, default=64)
     parser.add_argument("--otsu", action="store_true")
     parser.add_argument("--no-pretrained", action="store_true")
     parser.add_argument("--no-standard-augmentation", action="store_true")
