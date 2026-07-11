@@ -2,52 +2,14 @@ cff-version: 1.2.0
 message: "If you use this software or the datasets, please cite the paper below."
 title: "Learning Diachronic Representations of Ancient Greek Letterforms"
 authors:
-  - family-names: Pavlopoulos
-    given-names: John
-  - family-names: Barbakos
-    given-names: Spyros
-  - family-names: Ferretti
-    given-names: Lavinia
-  - family-names: Voulgarakis
-    given-names: Dionysis
-  - family-names: Paparrigopoulou
-    given-names: Asimina
-  - family-names: Konstantinidou
-    given-names: Maria
-  - family-names: De Gregorio
-    given-names: Giuseppe
-  - family-names: Marthot-Santaniello
-    given-names: Isabelle
-  - family-names: Platanou
-    given-names: Paraskevi
-  - family-names: Essler
-    given-names: Holger
+  - name: "Anonymous (under double-blind review)"
 year: 2026
 license: CC-BY-4.0
-repository-code: "https://github.com/ipavlopoulos/diachronic-greek-letterforms"
+repository-code: "https://anonymous.4open.science/r/diachronic-greek-letterforms"
 preferred-citation:
   type: conference-paper
   title: "Learning Diachronic Representations of Ancient Greek Letterforms"
   collection-title: "International Conference on Document Analysis and Recognition (ICDAR)"
   year: 2026
   authors:
-    - family-names: Pavlopoulos
-      given-names: John
-    - family-names: Barbakos
-      given-names: Spyros
-    - family-names: Ferretti
-      given-names: Lavinia
-    - family-names: Voulgarakis
-      given-names: Dionysis
-    - family-names: Paparrigopoulou
-      given-names: Asimina
-    - family-names: Konstantinidou
-      given-names: Maria
-    - family-names: De Gregorio
-      given-names: Giuseppe
-    - family-names: Marthot-Santaniello
-      given-names: Isabelle
-    - family-names: Platanou
-      given-names: Paraskevi
-    - family-names: Essler
-      given-names: Holger
+    - name: "Anonymous (under double-blind review)"
