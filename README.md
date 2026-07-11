@@ -20,9 +20,16 @@ work:
   Implemented as `SimilarityWeightedSupConLoss` in [`source.py`](source.py),
   with weight `w_ia = 1 + λ · S_{y_i,y_a} / S̄`.
 
-The best model in the paper is **ResNet18, pre-trained and fine-tuned, with
-LF + DSCL**, which attains 0.83 accuracy/F1 on Hell-Char and produces embeddings
-that cluster by letter far better than PCA or generic pre-trained features.
+Across four backbones (all results reported as mean±SD over training seeds 42,
+43, 44), the strongest model is **ConvNeXt-V2 with LF + DSCL** — 0.863/0.862
+accuracy/macro-F1 on Hell-Char and the best embedding clustering (Spectral NMI
+0.811). LF + DSCL gives the largest, statistically reliable gains on the two
+higher-capacity pre-trained backbones, ConvNeXt-V2 (ΔF1 +0.015) and
+ResNet18-PT+FT (ΔF1 +0.029). The **released checkpoint bundled in this repo** is
+**ResNet18-PT+FT + LF + DSCL** (0.843/0.841) — it is the model used for every
+figure and the diachronic-generalization evaluation below. All learned
+embeddings cluster by letter far better than PCA or generic pre-trained features.
+See the [Results](#results) tables for the full breakdown.
 
 ## Interactive embedding map
 
@@ -70,7 +77,7 @@ scripts/
   train_resnet_lf_dscl.py     ResNet18 trainer (LF/RE/none x DSCL/SCL/none, pretrained or scratch)
   train_fcnn_variant.py       lightweight CNN (fCNN) trainer with the same options
   train_resnet_pt_ft_ce.py    ResNet18 pre-trained + fine-tuned, cross-entropy baseline
-  train_timm_backbone.py      ViT-16S / ConvNeXt-V2 trainers (preliminary backbones, future work)
+  train_timm_backbone.py      ViT-16S / ConvNeXt-V2 trainers (ConvNeXt-V2 is the top backbone)
   evaluate.py                 Hell-Char classification (Table 1) + embedding clustering (Table 2)
   eval_diachronic.py          PaLit-Char / Med-Char generalization (Table 3)
   reproduce_figure4.py        temporal error boxplot on Med-Char (Fig. 4)
@@ -91,6 +98,50 @@ trained checkpoints are written under `runs/` (git-ignored); pass `--checkpoint`
 to use one of those instead. The lightweight CNN checkpoint
 `best_cnn_letter_model.pth` is also included for the demo notebook.
 
+## Results
+
+All numbers are **mean±SD over training seeds 42, 43, 44**, each model evaluated
+on its own seed's held-out 20% split, under the ReduceLROnPlateau scheduler.
+**Bold** marks the best value in a comparison. LF = lacuna-driven augmentation;
+RE = rectangular random erasure; SCL = supervised contrastive loss; DSCL = our
+dynamically weighted supervised contrastive loss. ΔF1 compares Aug+LF+DSCL with
+Aug+RE+SCL for the same model.
+
+### Classification on Hell-Char (Accuracy / Macro-F1)
+
+| Model | No aug. | Aug+RE+SCL | Aug+LF+DSCL | ΔF1 |
+|---|---|---|---|---|
+| ResNet18 (scratch) | 0.752±0.005 / 0.724±0.009 | **0.822±0.002** / 0.812±0.002 | 0.821±0.002 / **0.813±0.001** | +0.001 |
+| ResNet18-PT+FT *(released)* | 0.789±0.019 / 0.769±0.034 | 0.817±0.007 / 0.812±0.007 | **0.843±0.006** / **0.841±0.007** | +0.029 |
+| ViT-16S | 0.759±0.014 / 0.737±0.021 | 0.852±0.007 / 0.846±0.006 | **0.853±0.004** / **0.849±0.008** | +0.003 |
+| **ConvNeXt-V2** | 0.826±0.012 / 0.821±0.014 | 0.851±0.007 / 0.847±0.008 | **0.863±0.007** / **0.862±0.006** | +0.015 |
+
+LF+DSCL beats Aug+RE+SCL by margins that exceed run-to-run variation only for the
+two high-capacity pre-trained backbones (ConvNeXt-V2, ResNet18-PT+FT); for the
+from-scratch ResNet18 and ViT-16S the two recipes are within noise (|ΔF1| ≤ 0.003).
+
+### Clustering of the embeddings on Hell-Char (cluster-vs-label NMI)
+
+Sorted by Spectral NMI. Embeddings are extracted with the training normalization.
+
+| Embedding | k-means NMI | Spectral NMI | AH NMI |
+|---|---|---|---|
+| ConvNeXt-V2 + Aug+LF+DSCL | **0.812±0.004** | **0.811±0.002** | **0.812±0.002** |
+| ConvNeXt-V2 + Aug+RE+SCL | 0.797±0.005 | 0.803±0.006 | 0.794±0.007 |
+| ViT-16S + Aug+LF+DSCL | 0.793±0.003 | 0.790±0.001 | 0.788±0.003 |
+| ViT-16S + Aug+RE+SCL | 0.788±0.016 | 0.787±0.011 | 0.784±0.010 |
+| ResNet18-PT+FT + Aug+LF+DSCL | 0.785±0.004 | 0.784±0.004 | 0.781±0.002 |
+| ConvNeXt-V2 + No aug. | 0.772±0.007 | 0.776±0.012 | 0.774±0.010 |
+| ResNet18-PT+FT + Aug+RE+SCL | 0.756±0.009 | 0.756±0.011 | 0.756±0.012 |
+| ResNet18 + Aug+RE+SCL | 0.753±0.007 | 0.751±0.005 | 0.747±0.009 |
+| ResNet18 + Aug+LF+DSCL | 0.748±0.009 | 0.750±0.006 | 0.742±0.002 |
+| ResNet18-PT+FT + No aug. | 0.730±0.014 | 0.729±0.017 | 0.732±0.012 |
+| ViT-16S + No aug. | 0.701±0.010 | 0.705±0.011 | 0.707±0.011 |
+| ResNet18 + No aug. | 0.682±0.002 | 0.677±0.003 | 0.684±0.007 |
+
+Per-run metric summaries for these cells are in the `runs/**/…_summary.json` and
+`runs/clustering_table_*.json` files. The commands that regenerate them follow.
+
 ## Reproducing the paper
 
 Every command is run from the repository root. Training writes a checkpoint and
@@ -108,7 +159,7 @@ that checkpoint.
 | ResNet18-FT (scratch) | `python scripts/train_resnet_lf_dscl.py --no-pretrained --erasure none --no-contrastive` |
 | ResNet18-PT+FT | `python scripts/train_resnet_lf_dscl.py --erasure none --no-contrastive` |
 | ResNet18-PT+FT + SCL | `python scripts/train_resnet_lf_dscl.py --erasure none --contrastive-loss scl` |
-| **ResNet18-PT+FT + LF + DSCL** (main) | `python scripts/train_resnet_lf_dscl.py` |
+| **ResNet18-PT+FT + LF + DSCL** (released checkpoint) | `python scripts/train_resnet_lf_dscl.py` |
 
 Then score a checkpoint (reports Accuracy and macro-F1; `--per-letter` adds the
 per-class report):
@@ -148,14 +199,20 @@ with a distinct marker shape per century); convert it to PDF with
 `rsvg-convert -f pdf in.svg -o out.pdf`. The boxplot height is adjustable via
 `--fig-height` for a more compact figure.
 
-### Preliminary transformer backbones (future work)
+### Transformer / ConvNeXt backbones (Tables 1–2)
 
-The paper notes that LF + DSCL also help ViT-16S and ConvNeXt-V2. Train them with:
+ViT-16S and ConvNeXt-V2 are full backbones in the results above — ConvNeXt-V2 +
+LF + DSCL is the top model on both classification and clustering. Train them with
+(inputs are 64×64 by default, matching the reported runs):
 
 ```bash
 python scripts/train_timm_backbone.py --model-name convnextv2_tiny --use-lf --use-dscl
 python scripts/train_timm_backbone.py --model-name vit_small_patch16_224 --use-lf --use-dscl
 ```
+
+Reproduce the three-seed cells by repeating each run with `--seed 42`, `--seed 43`,
+and `--seed 44`, then averaging. Score a resulting checkpoint with
+`python scripts/evaluate.py --backbone {convnext,vit} --checkpoint <path>`.
 
 ## Quick start: export embeddings
 
