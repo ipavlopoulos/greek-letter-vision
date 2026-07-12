@@ -1,6 +1,6 @@
 # Learning Diachronic Representations of Ancient Greek Letterforms
 
-This repository accompanies the papers **"Learning Diachronic Representations of Ancient Greek Letterforms"** and **"Graphic Compensation"**. It contains the three Greek letter datasets introduced in the first paper, the PyTorch implementation of the methodological contributions developed across the two papers, and the scripts needed to reproduce the main tables and figures.
+This repository accompanies the papers **"Learning Diachronic Representations of Ancient Greek Letterforms"** and **"Graphic Compensation in Ancient Greek Documentary Hands: A Computational Paleographic Analysis from Handwritten Character Recognition"**. It contains the three Greek letter datasets introduced in the first paper, the PyTorch implementation of the methodological contributions developed across the two papers, and the scripts needed to reproduce the main tables and figures.
 
 ## Repository scope
 
@@ -70,10 +70,6 @@ GPU is recommended for training; evaluation and the bundled demo run on CPU.
 Reproducing the t-SNE figure as PDF additionally needs `rsvg-convert`
 (`librsvg`), a system package.
 
-## Graphic Compensation experiments
-
-The experiments for the Graphic Compensation paper use the Hell-Char dataset and extend the existing character-recognition framework with additional ConvNeXt-V2 evaluations and pairwise confusion analyses. The scripts used to reproduce these analyses are located in `scripts/`.
-
 ## Repository layout
 
 ```
@@ -102,6 +98,10 @@ script uses it by default, so they run out-of-the-box without training. The Grap
 trained checkpoints are written under `runs/` (git-ignored); pass `--checkpoint`
 to use one of those instead. The lightweight CNN checkpoint
 `best_cnn_letter_model.pth` is also included for the demo notebook.
+
+## Graphic Compensation experiments
+
+The experiments for the Graphic Compensation paper use the Hell-Char dataset and extend the existing character-recognition framework with additional ConvNeXt-V2 evaluations and pairwise confusion analyses. The scripts used to reproduce these analyses are located in `scripts/`.
 
 ## Results
 
