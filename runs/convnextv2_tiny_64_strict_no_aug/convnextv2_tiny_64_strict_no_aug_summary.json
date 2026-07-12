@@ -1,0 +1,265 @@
+{
+  "checkpoint": "runs/convnextv2_tiny_64_strict_no_aug/best_convnextv2_tiny_64_strict_no_aug.pth",
+  "classes": [
+    "Alpha",
+    "Beta",
+    "Chi",
+    "Delta",
+    "Epsilon",
+    "Eta",
+    "Gamma",
+    "Iota",
+    "Kappa",
+    "Lambda",
+    "Mu",
+    "Nu",
+    "Omega",
+    "Omicron",
+    "Phi",
+    "Pi",
+    "Psi",
+    "Rho",
+    "Sigma",
+    "Tau",
+    "Theta",
+    "Upsilon",
+    "Xi",
+    "Zeta"
+  ],
+  "train_size": 9369,
+  "val_size": 1042,
+  "test_size": 2603,
+  "train_losses": [
+    3.1267136358911958,
+    3.1141681571133506,
+    3.117031063261428,
+    3.1127148576423544,
+    3.112909954479021,
+    3.112846853257447,
+    3.1133233571284125,
+    3.112131705290735,
+    3.1116226581107695,
+    3.111477102919314,
+    3.1111442201711896,
+    3.1100460446011944,
+    3.110691902438736
+  ],
+  "val_losses": [
+    3.1119449834219552,
+    3.1117757126374346,
+    3.1092307315906957,
+    3.1094125616802133,
+    3.1109524162168007,
+    3.1111644261629245,
+    3.1115549539650242,
+    3.1102883646447004,
+    3.112420871939632,
+    3.110421675866945,
+    3.109579065253318,
+    3.113792476178131,
+    3.11085592533485
+  ],
+  "val_accuracies": [
+    0.052783109404990404,
+    0.052783109404990404,
+    0.04894433781190019,
+    0.053742802303262956,
+    0.052783109404990404,
+    0.052783109404990404,
+    0.053742802303262956,
+    0.053742802303262956,
+    0.052783109404990404,
+    0.053742802303262956,
+    0.052783109404990404,
+    0.052783109404990404,
+    0.052783109404990404
+  ],
+  "test_report": {
+    "Alpha": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 139.0
+    },
+    "Beta": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 67.0
+    },
+    "Chi": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 85.0
+    },
+    "Delta": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 113.0
+    },
+    "Epsilon": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 138.0
+    },
+    "Eta": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 124.0
+    },
+    "Gamma": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 105.0
+    },
+    "Iota": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 141.0
+    },
+    "Kappa": {
+      "precision": 0.04878985785631963,
+      "recall": 1.0,
+      "f1-score": 0.09304029304029304,
+      "support": 127.0
+    },
+    "Lambda": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 117.0
+    },
+    "Mu": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 126.0
+    },
+    "Nu": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 134.0
+    },
+    "Omega": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 126.0
+    },
+    "Omicron": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 136.0
+    },
+    "Phi": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 83.0
+    },
+    "Pi": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 127.0
+    },
+    "Psi": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 17.0
+    },
+    "Rho": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 133.0
+    },
+    "Sigma": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 138.0
+    },
+    "Tau": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 139.0
+    },
+    "Theta": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 86.0
+    },
+    "Upsilon": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 133.0
+    },
+    "Xi": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 47.0
+    },
+    "Zeta": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1-score": 0.0,
+      "support": 22.0
+    },
+    "accuracy": 0.04878985785631963,
+    "macro avg": {
+      "precision": 0.002032910744013318,
+      "recall": 0.041666666666666664,
+      "f1-score": 0.003876678876678877,
+      "support": 2603.0
+    },
+    "weighted avg": {
+      "precision": 0.0023804502296398745,
+      "recall": 0.04878985785631963,
+      "f1-score": 0.0045394226723462225,
+      "support": 2603.0
+    }
+  },
+  "settings": {
+    "model_name": "convnextv2_tiny",
+    "display_name": "ConvNeXt-V2",
+    "data_dir": "/home/hugo/diachronic-greek-letterforms/data",
+    "output_dir": "runs/convnextv2_tiny_64_strict_no_aug",
+    "checkpoint_name": "best_convnextv2_tiny_64_strict_no_aug.pth",
+    "summary_name": "convnextv2_tiny_64_strict_no_aug_summary.json",
+    "epochs": 100,
+    "batch_size": 16,
+    "learning_rate": 0.0001,
+    "lambda_scl": 0.1,
+    "patience": 10,
+    "num_workers": 2,
+    "seed": 42,
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "image_size": 64,
+    "otsu": false,
+    "no_pretrained": false,
+    "no_standard_augmentation": true,
+    "use_lf": false,
+    "use_dscl": false,
+    "model": "ConvNeXt-V2",
+    "pretrained": true,
+    "standard_augmentation": false,
+    "lf_lacuna_augmentation": false,
+    "dscl_similarity_weighting": false,
+    "loss": "cross_entropy"
+  }
+}

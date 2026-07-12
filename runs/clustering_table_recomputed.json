@@ -1,0 +1,108 @@
+{
+  "settings": {
+    "seed": 42,
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "trainval_size": 10411,
+    "test_size_n": 2603,
+    "classes": [
+      "Alpha",
+      "Beta",
+      "Chi",
+      "Delta",
+      "Epsilon",
+      "Eta",
+      "Gamma",
+      "Iota",
+      "Kappa",
+      "Lambda",
+      "Mu",
+      "Nu",
+      "Omega",
+      "Omicron",
+      "Phi",
+      "Pi",
+      "Psi",
+      "Rho",
+      "Sigma",
+      "Tau",
+      "Theta",
+      "Upsilon",
+      "Xi",
+      "Zeta"
+    ],
+    "protocol_note": "KMeans is train-fitted and majority-label-mapped; Spectral clusters test embeddings directly; Agglomerative clusters train embeddings and transfers cluster ids to test via 5-NN, matching the notebook protocol."
+  },
+  "rows": {
+    "ResNet18+LF+DSCL": {
+      "kmeans": {
+        "nmi": 0.6593545911957633,
+        "ari": 0.5285064141928946
+      },
+      "spectral": {
+        "nmi": 0.6701228538626558,
+        "ari": 0.5469833385398507
+      },
+      "agglomerative": {
+        "nmi": 0.6632932821168764,
+        "ari": 0.5374855882976507
+      }
+    },
+    "fCNN+LF+DSCL": {
+      "kmeans": {
+        "nmi": 0.21292775116900792,
+        "ari": 0.030082524242441767
+      },
+      "spectral": {
+        "nmi": 0.30316278487591564,
+        "ari": 0.10914975247884372
+      },
+      "agglomerative": {
+        "nmi": 0.21242733693443946,
+        "ari": 0.021457934939236183
+      }
+    },
+    "ResNet18+PT+FT": {
+      "kmeans": {
+        "nmi": 0.5497383729317185,
+        "ari": 0.33284933061434435
+      },
+      "spectral": {
+        "nmi": 0.5543154328414365,
+        "ari": 0.3138925745255134
+      },
+      "agglomerative": {
+        "nmi": 0.5435579751138961,
+        "ari": 0.33901000903495876
+      }
+    },
+    "Otsu+PCA": {
+      "kmeans": {
+        "nmi": 0.31010040823172036,
+        "ari": 0.12958392649746578
+      },
+      "spectral": {
+        "nmi": 0.3833987392505488,
+        "ari": 0.1789411920959363
+      },
+      "agglomerative": {
+        "nmi": 0.36950246502693523,
+        "ari": 0.18208202847954458
+      }
+    },
+    "ResNet18+PT": {
+      "kmeans": {
+        "nmi": 0.05379700606080637,
+        "ari": 0.015863478396193707
+      },
+      "spectral": {
+        "nmi": 0.07413356211248873,
+        "ari": 0.011762164378293432
+      },
+      "agglomerative": {
+        "nmi": 0.061900168058350524,
+        "ari": 0.007590662093624053
+      }
+    }
+  }
+}

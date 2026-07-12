@@ -1,0 +1,206 @@
+{
+  "settings": {
+    "seed": 42,
+    "test_size": 0.2,
+    "val_size": 0.1,
+    "trainval_size": 10411,
+    "test_size_n": 2603,
+    "classes": [
+      "Alpha",
+      "Beta",
+      "Chi",
+      "Delta",
+      "Epsilon",
+      "Eta",
+      "Gamma",
+      "Iota",
+      "Kappa",
+      "Lambda",
+      "Mu",
+      "Nu",
+      "Omega",
+      "Omicron",
+      "Phi",
+      "Pi",
+      "Psi",
+      "Rho",
+      "Sigma",
+      "Tau",
+      "Theta",
+      "Upsilon",
+      "Xi",
+      "Zeta"
+    ],
+    "protocol_note": "KMeans is train-fitted and majority-label-mapped; Spectral clusters test embeddings directly; Agglomerative clusters train embeddings and transfers cluster ids to test via 5-NN, matching the notebook protocol."
+  },
+  "rows": {
+    "ResNet18+LF+DSCL": {
+      "kmeans": {
+        "nmi": 0.6593545911957633,
+        "ari": 0.5285064141928946
+      },
+      "spectral": {
+        "nmi": 0.6701228538626558,
+        "ari": 0.5469833385398507
+      },
+      "agglomerative": {
+        "nmi": 0.6632932821168764,
+        "ari": 0.5374855882976507
+      }
+    },
+    "ViT-16S": {
+      "kmeans": {
+        "nmi": 0.5901968456814687,
+        "ari": 0.4269419236692388
+      },
+      "spectral": {
+        "nmi": 0.5955139047769423,
+        "ari": 0.4442509595351451
+      },
+      "agglomerative": {
+        "nmi": 0.5924074299138633,
+        "ari": 0.4329792340298022
+      }
+    },
+    "ViT-16S+LF+DSCL": {
+      "kmeans": {
+        "nmi": 0.6588623116662371,
+        "ari": 0.4972797742278566
+      },
+      "spectral": {
+        "nmi": 0.6683603349648521,
+        "ari": 0.505158141606534
+      },
+      "agglomerative": {
+        "nmi": 0.6495581431907159,
+        "ari": 0.49110533510354254
+      }
+    },
+    "fCNN+Aug+LF+DSCL": {
+      "kmeans": {
+        "nmi": 0.1725759515246938,
+        "ari": 0.038854494912077896
+      },
+      "spectral": {
+        "nmi": 0.2747579828297428,
+        "ari": 0.10067699184719456
+      },
+      "agglomerative": {
+        "nmi": 0.1824150906495776,
+        "ari": 0.03751205520112989
+      }
+    },
+    "fCNN": {
+      "kmeans": {
+        "nmi": 0.22671340448672328,
+        "ari": 0.043353795988805184
+      },
+      "spectral": {
+        "nmi": 0.34528780025087896,
+        "ari": 0.13947999600746205
+      },
+      "agglomerative": {
+        "nmi": 0.23245999493677438,
+        "ari": 0.04215556367026687
+      }
+    },
+    "fCNN+Aug": {
+      "kmeans": {
+        "nmi": 0.33260361792780735,
+        "ari": 0.11024526401250097
+      },
+      "spectral": {
+        "nmi": 0.40606962626866416,
+        "ari": 0.1747769117232611
+      },
+      "agglomerative": {
+        "nmi": 0.33212707839147865,
+        "ari": 0.07804807250042493
+      }
+    },
+    "ResNet18+PT+FT": {
+      "kmeans": {
+        "nmi": 0.2600417557241047,
+        "ari": 0.06657078804080592
+      },
+      "spectral": {
+        "nmi": 0.30861258055195384,
+        "ari": 0.07446809950021972
+      },
+      "agglomerative": {
+        "nmi": 0.2735836485708834,
+        "ari": 0.047459440779554815
+      }
+    },
+    "ResNet18+PT+FT+Aug": {
+      "kmeans": {
+        "nmi": 0.5497383729317185,
+        "ari": 0.33284933061434435
+      },
+      "spectral": {
+        "nmi": 0.5543154328414365,
+        "ari": 0.3138925745255134
+      },
+      "agglomerative": {
+        "nmi": 0.5435579751138961,
+        "ari": 0.33901000903495876
+      }
+    },
+    "ResNet18": {
+      "kmeans": {
+        "nmi": 0.27265592207818573,
+        "ari": 0.08932402337380696
+      },
+      "spectral": {
+        "nmi": 0.2980491594341263,
+        "ari": 0.10453023457757894
+      },
+      "agglomerative": {
+        "nmi": 0.2508890250672022,
+        "ari": 0.06741101975834002
+      }
+    },
+    "ResNet18+Aug": {
+      "kmeans": {
+        "nmi": 0.5832144499897763,
+        "ari": 0.4056937252707354
+      },
+      "spectral": {
+        "nmi": 0.597650978017767,
+        "ari": 0.4115665831338787
+      },
+      "agglomerative": {
+        "nmi": 0.579236639022535,
+        "ari": 0.3992080030307852
+      }
+    },
+    "Otsu+PCA": {
+      "kmeans": {
+        "nmi": 0.31010040823172036,
+        "ari": 0.12958392649746578
+      },
+      "spectral": {
+        "nmi": 0.3833987392505488,
+        "ari": 0.1789411920959363
+      },
+      "agglomerative": {
+        "nmi": 0.36950246502693523,
+        "ari": 0.18208202847954458
+      }
+    },
+    "ResNet18+PT": {
+      "kmeans": {
+        "nmi": 0.05379700606080637,
+        "ari": 0.015863478396193707
+      },
+      "spectral": {
+        "nmi": 0.07413356211248873,
+        "ari": 0.011762164378293432
+      },
+      "agglomerative": {
+        "nmi": 0.061900168058350524,
+        "ari": 0.007590662093624053
+      }
+    }
+  }
+}
