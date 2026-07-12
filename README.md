@@ -1,11 +1,12 @@
 # Learning Diachronic Representations of Ancient Greek Letterforms
 
-This repository accompanies the paper *"Learning Diachronic Representations of
-Ancient Greek Letterforms."* It contains the three Greek letter datasets
-introduced in the paper, the PyTorch implementation of our two methodological
-contributions, and the scripts that reproduce the main tables and figures.
+This repository accompanies the papers **"Learning Diachronic Representations of Ancient Greek Letterforms"** and **"Graphic Compensation"**. It contains the three Greek letter datasets introduced in the first paper, the PyTorch implementation of the methodological contributions developed across the two papers, and the scripts needed to reproduce the main tables and figures.
 
-We study how modern representation learning captures the variation of Greek
+## Repository scope
+
+The two papers share the same data infrastructure and part of the same representation-learning framework, but address different research questions. The first paper introduces the datasets and focuses on diachronic representation learning for ancient Greek letterforms. The Graphic Compensation paper reuses this infrastructure to study character-level confusion patterns as paleographic evidence for the visual organization of Greek documentary scripts.
+
+In the first paper, we study how modern representation learning captures the variation of Greek
 handwriting across more than two millennia. Two domain-driven ideas drive the
 work:
 
@@ -68,6 +69,10 @@ pip install -r requirements.txt
 GPU is recommended for training; evaluation and the bundled demo run on CPU.
 Reproducing the t-SNE figure as PDF additionally needs `rsvg-convert`
 (`librsvg`), a system package.
+
+## Graphic Compensation experiments
+
+The experiments for the Graphic Compensation paper use the Hell-Char dataset and extend the existing character-recognition framework with additional ConvNeXt-V2 evaluations and pairwise confusion analyses. The scripts used to reproduce these analyses are located in `scripts/`.
 
 ## Repository layout
 
