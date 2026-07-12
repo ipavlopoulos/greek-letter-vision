@@ -61,8 +61,8 @@ a merged non-alphabetic category that is ignored.
 ## Installation
 
 ```bash
-git clone https://github.com/anonymous/diachronic-greek-letterforms.git
-cd diachronic-greek-letterforms
+git clone https://anonymous.4open.science/r/ancient-hand-graphic-compensation/
+cd ancient-hand-graphic-compensation
 pip install -r requirements.txt
 ```
 
@@ -98,7 +98,7 @@ notebooks/                    exploratory notebooks (training, clustering, demo)
 
 The main model — **ResNet18-PT+FT + LF + DSCL** — is bundled at
 `models/resnet_lf_dscl/best_resnet_lf_dscl_model.pth`, and every evaluation/figure
-script uses it by default, so they run out-of-the-box without training. Newly
+script uses it by default, so they run out-of-the-box without training. The Graphic Compensation paper uses the stronger ConvNeXt-V2 LF+DSCL model, the script for reproducibility can be found in `scripts/`. Newly
 trained checkpoints are written under `runs/` (git-ignored); pass `--checkpoint`
 to use one of those instead. The lightweight CNN checkpoint
 `best_cnn_letter_model.pth` is also included for the demo notebook.
@@ -228,13 +228,19 @@ python scripts/extract_representations.py data/palitchar/cliplets --output palit
 ## Citation
 
 ```bibtex
-@inproceedings{anonymous2026diachronic,
-  title     = {Learning Diachronic Representations of Ancient Greek Letterforms},
-  author    = {Anonymous (under double-blind review)},
-  booktitle = {International Conference on Document Analysis and Recognition (ICDAR)},
-  year      = {2026}
+@misc{anonymous2026diachronic,
+  title  = {Learning Diachronic Representations of Ancient Greek Letterforms},
+  author = {Anonymous},
+  year   = {2026},
+  note   = {Anonymized Manuscript}
 }
-```
+
+@misc{anonymous2026graphiccompensation,
+  title  = {Graphic Compensation in Ancient Greek Documentary Hands: A Computational Paleographic Analysis from Handwritten Character Recognition},
+  author = {Anonymous},
+  year   = {2026},
+  note   = {Manuscript under double-blind review}
+}
 
 ## License
 
