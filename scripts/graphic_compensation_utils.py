@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 Shared utilities for graphic-compensation analyses.
-This file is safe for an anonymized repository: it uses only relative paths.
 """
 from __future__ import annotations
 
