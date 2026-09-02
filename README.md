@@ -1,30 +1,61 @@
-# Learning Diachronic Representations of Ancient Greek Letterforms
+# Ancient Greek Letterform Recognition and Representation Learning
 
-This repository accompanies the paper *"Learning Diachronic Representations of
-Ancient Greek Letterforms."* It contains the three Greek letter datasets
-introduced in the paper, the PyTorch implementation of our two methodological
-contributions, and the scripts that reproduce the main tables and figures.
+This repository supports two related studies on computational analysis of
+Ancient Greek handwritten letterforms:
 
-We study how modern representation learning captures the variation of Greek
-handwriting across more than two millennia. Two domain-driven ideas drive the
-work:
+1. **Learning Diachronic Representations of Ancient Greek Letterforms**
+   — ICDAR 2026.
 
-- **LF — Lacuna-driven Fragmentation augmentation.** Instead of rectangular
-  cut-out erasure, we mask images with irregular *elliptic* lacunae that
-  approximate real manuscript damage (flaking, humidity, worm holes).
-  Implemented as `RandomLacunae` in [`source.py`](source.py).
-- **DSCL — Dynamically similarity-weighted Supervised Contrastive Loss.** A
-  supervised contrastive loss whose negative pairs are re-weighted by a
-  dynamically re-estimated inter-class similarity matrix, so visually similar
-  letters (e.g. Alpha/Lambda) are not pushed apart as hard as unrelated ones.
-  Implemented as `SimilarityWeightedSupConLoss` in [`source.py`](source.py),
-  with weight `w_ia = 1 + λ · S_{y_i,y_a} / S̄`.
+2. **Graphic Compensation in Ancient Greek Documentary Hands:
+   A Computational Paleographic Analysis from Handwritten Character Recognition**
+   — ACM Journal on Computing and Cultural Heritage (JOCCH), to appear, 2026.
 
-The best model in the paper is **ResNet18, pre-trained and fine-tuned, with
-LF + DSCL**, which attains 0.83 accuracy/F1 on Hell-Char and produces embeddings
-that cluster by letter far better than PCA or generic pre-trained features.
+The two studies share the Hell-Char character dataset and a common recognition
+framework, while addressing complementary research questions: diachronic
+representation learning in the first study and computational analysis of
+graphic compensation and character confusion patterns in the second.
 
-## Interactive embedding map
+## At a glance
+
+| Study | Main focus | Main model | Main resources |
+|---|---|---|---|
+| **ICDAR 2026** — *Learning Diachronic Representations of Ancient Greek Letterforms* | Diachronic representation learning and cross-period generalization | ResNet18-PT+FT + LF + DSCL | Hell-Char, PaLit-Char, Med-Char, reproduction scripts, interactive t-SNE |
+| **JOCCH 2026** — *Graphic Compensation in Ancient Greek Documentary Hands* | Paleographic analysis of structured character confusions and graphic compensation | ConvNeXt-V2 Tiny + LF + DSCL | Hell-Char, confusion analyses, TM-level evaluation, BT2 stress test, interactive embedding explorer |
+
+### Live resources
+
+- **JOCCH interactive embedding explorer:**  
+  https://diachronic-greek-letterforms.streamlit.app/
+
+- **Latest JOCCH ConvNeXt-V2 model and embedding artifacts:**  
+  https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch
+
+- **ICDAR interactive diachronic embedding map:**  
+  https://htmlpreview.github.io/?https://github.com/ipavlopoulos/diachronic-greek-letterforms/blob/main/visual_artifacts/letter_century_plot_resnet_reproduced.html
+
+## Interactive demos
+
+### JOCCH — Greek Letter Embedding Explorer
+
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://diachronic-greek-letterforms.streamlit.app/)
+
+▶ **[Launch the Greek Letter Embedding Explorer](https://diachronic-greek-letterforms.streamlit.app/)**
+
+Upload a single Ancient Greek handwritten character crop to:
+
+- obtain the ConvNeXt-V2 Tiny + LF + DSCL class prediction;
+- project its learned representation into the fixed Hell-Char UMAP space;
+- inspect representative real Hell-Char letterforms;
+- retrieve its five nearest Hell-Char neighbours using cosine similarity in the
+  original learned embedding space.
+
+The UMAP is used for visualization only; nearest-neighbour retrieval is computed
+in the original normalized ConvNeXt embedding space.
+
+The final JOCCH model checkpoint and reference embedding artifacts are hosted on
+the **[Hugging Face Model Hub](https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch)**.
+
+### ICDAR — Diachronic letter–century embedding map
 
 A t-SNE projection of the Med-Char letter embeddings, with one real cliplet per
 letter–century group overlaid in front of the points (coloured blue = older →
@@ -33,6 +64,63 @@ red = more recent, one marker shape per century):
 [![Letter–century t-SNE of Med-Char embeddings](visual_artifacts/letter_century_plot_resnet_reproduced.svg)](https://htmlpreview.github.io/?https://github.com/ipavlopoulos/diachronic-greek-letterforms/blob/main/visual_artifacts/letter_century_plot_resnet_reproduced.html)
 
 ▶ **[Open the interactive version](https://htmlpreview.github.io/?https://github.com/ipavlopoulos/diachronic-greek-letterforms/blob/main/visual_artifacts/letter_century_plot_resnet_reproduced.html)** — hover any point for its letter and year (generated by `scripts/reproduce_letter_century_plot.py`).
+
+## Relationship between the two studies
+
+The two papers use a shared computational framework but address different
+research questions.
+
+The **ICDAR 2026 study** focuses on whether learned character representations
+capture meaningful variation across the long history of Greek handwriting.
+It introduces and evaluates LF and DSCL across Hell-Char, PaLit-Char, and
+Med-Char, with ResNet18 as its principal backbone.
+
+The **JOCCH study** builds on the same Hell-Char character-recognition setting,
+including the same 24 alphabetic classes and the LF + DSCL framework, but shifts
+the research question from diachronic representation learning to
+**computational paleographic analysis of structured character confusions**.
+Its principal model is ConvNeXt-V2 Tiny + LF + DSCL.
+
+In addition to the main Hell-Char evaluation, the JOCCH study includes
+dedicated analyses of pairwise confusion structure, TM-level separation,
+objective stability, and a BT2 degradation stress test.
+
+For the **ICDAR 2026 study**, the main paper model is
+**ResNet18-PT+FT + LF + DSCL**, achieving approximately 0.83
+accuracy/macro-F1 on Hell-Char and producing strongly class-structured embeddings.
+
+For the subsequent **JOCCH study**, the recognition backbone is upgraded to
+**ConvNeXt-V2 Tiny + LF + DSCL**. The final JOCCH model reaches
+**0.864 accuracy and 0.860 macro-F1** on the held-out Hell-Char test set and is
+used for the paper's character-confusion and graphic-compensation analyses.
+
+The final ConvNeXt-V2 checkpoint is hosted separately on
+[Hugging Face](https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch).
+
+## Shared methodological framework
+
+Both studies build on a common character-recognition framework and share the
+Hell-Char benchmark, preprocessing pipeline, and domain-informed training
+strategies.
+
+Two methodological components are shared across the experiments:
+
+- **LF — Lacuna-based Fragmentation augmentation.** Instead of rectangular
+  cut-out erasure, LF introduces irregular lacunae that simulate localized
+  loss of visual information in historical handwritten material. It is
+  implemented as `RandomLacunae` in [`source.py`](source.py).
+
+- **DSCL — Dynamically similarity-weighted Supervised Contrastive Loss.**
+  DSCL re-weights negative pairs using a dynamically re-estimated inter-class
+  similarity matrix, reducing the penalty for visually similar character
+  classes relative to unrelated ones. It is implemented as
+  `SimilarityWeightedSupConLoss` in [`source.py`](source.py).
+
+The ICDAR study evaluates this framework primarily with ResNet18 and across
+diachronically distinct datasets. The subsequent JOCCH study retains the same
+Hell-Char character-recognition setting and LF + DSCL framework, while using
+ConvNeXt-V2 Tiny as its principal backbone for the analysis of structured
+character confusions and graphic compensation.
 
 ## Datasets
 
@@ -57,43 +145,79 @@ git clone https://github.com/ipavlopoulos/diachronic-greek-letterforms.git
 cd diachronic-greek-letterforms
 pip install -r requirements.txt
 ```
+GPU is recommended for training; the evaluation workflows and interactive demo
+can run on CPU.
 
-GPU is recommended for training; evaluation and the bundled demo run on CPU.
 Reproducing the t-SNE figure as PDF additionally needs `rsvg-convert`
 (`librsvg`), a system package.
 
-## Repository layout
-
-```
-source.py                     core library: models, LF/RE augmentation, DSCL loss, datasets, training loop
-scripts/
-  train_resnet_lf_dscl.py     ResNet18 trainer (LF/RE/none x DSCL/SCL/none, pretrained or scratch)
-  train_fcnn_variant.py       lightweight CNN (fCNN) trainer with the same options
-  train_resnet_pt_ft_ce.py    ResNet18 pre-trained + fine-tuned, cross-entropy baseline
-  train_timm_backbone.py      ViT-16S / ConvNeXt-V2 trainers (preliminary backbones, future work)
-  evaluate.py                 Hell-Char classification (Table 1) + embedding clustering (Table 2)
-  eval_diachronic.py          PaLit-Char / Med-Char generalization (Table 3)
-  reproduce_figure4.py        temporal error boxplot on Med-Char (Fig. 4)
-  reproduce_letter_century_plot.py   letter-century t-SNE map of Med-Char embeddings (Fig. 5)
-  reproduce_letter_forms.py   per-letter cluster medoids ("letter forms")
-  reproduce_confusion_similarity.py  confusion matrix + learned similarity matrix
-  create_aug3_examples.py     augmentation-vs-real-damage figure
-  extract_representations.py  export embeddings for a directory of cliplets
-models/resnet_lf_dscl/        bundled main checkpoint (ResNet18-PT+FT + LF + DSCL) + summary
-data/{hellchar,palitchar,medchar}/   cliplets + CSV per dataset
-notebooks/                    exploratory notebooks (training, clustering, demo)
-```
-
-The main model — **ResNet18-PT+FT + LF + DSCL** — is bundled at
+The principal ICDAR model — **ResNet18-PT+FT + LF + DSCL** — is bundled at
 `models/resnet_lf_dscl/best_resnet_lf_dscl_model.pth`, and every evaluation/figure
 script uses it by default, so they run out-of-the-box without training. Newly
 trained checkpoints are written under `runs/` (git-ignored); pass `--checkpoint`
 to use one of those instead. The lightweight CNN checkpoint
 `best_cnn_letter_model.pth` is also included for the demo notebook.
 
-## Reproducing the paper
+## Repository layout
 
-Every command is run from the repository root. Training writes a checkpoint and
+```text
+data/
+  hellchar/                         shared 24-class Ancient Greek character benchmark
+  palitchar/                        near-period diachronic evaluation set
+  medchar/                          medieval diachronic evaluation set
+
+models/
+  resnet_lf_dscl/                   bundled ICDAR ResNet18 + LF + DSCL checkpoint
+
+scripts/
+  train_resnet_lf_dscl.py           ICDAR ResNet18 training
+  train_fcnn_variant.py             lightweight CNN experiments
+  train_resnet_pt_ft_ce.py          ResNet18 cross-entropy baseline
+  train_timm_backbone.py            generic ConvNeXt-V2 / ViT training
+  evaluate.py                       Hell-Char classification and embedding clustering
+  eval_diachronic.py                PaLit-Char / Med-Char generalization
+  reproduce_figure4.py              temporal error analysis
+  reproduce_letter_century_plot.py  interactive diachronic embedding map
+  reproduce_letter_forms.py         representative letter forms
+  reproduce_confusion_similarity.py confusion and learned-similarity matrices
+  create_aug3_examples.py           augmentation vs. real-damage figure
+  extract_representations.py        embedding export
+
+jocch/
+  README.md                          JOCCH-specific reproduction notes
+  scripts/
+    run_train_main_convnextv2_lfdscl.sh
+    train_timm_backbone_tm_split.py
+    graphic_compensation_utils.py
+    evaluate_bt1_convnextv2_confusions.py
+    create_tm_level_split.py
+    evaluate_tm_split.py
+    create_bt2_matched_subset.py
+    evaluate_bt2_stress_test.py
+    evaluate_objective_stability.py
+
+demo/
+  streamlit_app.py                  Greek Letter Embedding Explorer
+  requirements.txt                  demo-specific dependencies
+  README.md                         demo documentation
+
+visual_artifacts/                   static and interactive visualizations
+notebooks/                          exploratory and reproduction notebooks
+runs/                               lightweight experiment summaries
+source.py                           shared LF, DSCL, datasets, models, and utilities
+```
+The bundled `models/resnet_lf_dscl/` checkpoint corresponds to the principal
+ResNet18 model used in the ICDAR study.
+
+The larger final **ConvNeXt-V2 Tiny + LF + DSCL** checkpoint used in the JOCCH
+study is hosted separately on the
+[Hugging Face Model Hub](https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch)
+together with the reference embeddings and UMAP artifacts used by the
+interactive demonstrator.
+
+## Reproducing the ICDAR 2026 study
+The following commands reproduce the principal experiments reported in
+*Learning Diachronic Representations of Ancient Greek Letterforms*. Every command is run from the repository root. Training writes a checkpoint and
 a `*_summary.json` under `runs/<name>/`; point the evaluation/figure scripts at
 that checkpoint.
 
@@ -148,22 +272,77 @@ with a distinct marker shape per century); convert it to PDF with
 `rsvg-convert -f pdf in.svg -o out.pdf`. The boxplot height is adjustable via
 `--fig-height` for a more compact figure.
 
-### Preliminary transformer backbones (future work)
+### Additional backbones and transition to the JOCCH study
 
-The paper notes that LF + DSCL also help ViT-16S and ConvNeXt-V2. Train them with:
+The ICDAR study also explored ViT-16S and ConvNeXt-V2 as additional backbones.
+The subsequent JOCCH study adopts **ConvNeXt-V2 Tiny + LF + DSCL** as its
+principal recognition model for the graphic-compensation analysis.
+
+Generic backbone training is available through:
 
 ```bash
-python scripts/train_timm_backbone.py --model-name convnextv2_tiny --use-lf --use-dscl
-python scripts/train_timm_backbone.py --model-name vit_small_patch16_224 --use-lf --use-dscl
+python scripts/train_timm_backbone.py \
+  --model-name convnextv2_tiny \
+  --use-lf \
+  --use-dscl
 ```
+The exact JOCCH training configuration and study-specific analyses are collected
+under [`jocch/`](jocch/).
+
+## Reproducing the JOCCH study
+
+The JOCCH extension accompanies:
+
+**Graphic Compensation in Ancient Greek Documentary Hands:
+A Computational Paleographic Analysis from Handwritten Character Recognition**
+(*ACM Journal on Computing and Cultural Heritage*, to appear, 2026).
+
+The study reuses the shared [`data/hellchar/`](data/hellchar/) benchmark and
+the common LF + DSCL implementation, while adopting **ConvNeXt-V2 Tiny** as
+its principal recognition backbone.
+
+The final model achieves **0.864 accuracy** and **0.860 macro-F1** on the
+held-out Hell-Char test set.
+
+The final checkpoint and the embedding artifacts used by the interactive demo
+are available from:
+
+**[Hugging Face — pplatanou/greek-letter-convnextv2-jocch](https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch)**
+
+### JOCCH-specific analyses
+
+The scripts under [`jocch/scripts/`](jocch/scripts/) support the principal
+robustness and paleographic analyses reported in the study:
+
+| Script | Purpose |
+|---|---|
+| `run_train_main_convnextv2_lfdscl.sh` | Main ConvNeXt-V2 Tiny + LF + DSCL training configuration |
+| `evaluate_bt1_convnextv2_confusions.py` | Main Hell-Char classification and pairwise confusion analysis |
+| `create_tm_level_split.py` | Construct a TM-disjoint train/validation/test split |
+| `train_timm_backbone_tm_split.py` | Train the ConvNeXt model under the TM-level split |
+| `evaluate_tm_split.py` | Evaluate robustness under TM-level separation |
+| `create_bt2_matched_subset.py` | Construct the matched BT2 degradation subset |
+| `evaluate_bt2_stress_test.py` | Evaluate the model under BT2 degradation |
+| `evaluate_objective_stability.py` | Assess the stability of confusion patterns across training objectives |
+| `graphic_compensation_utils.py` | Shared utilities for the JOCCH analyses |
+
+The JOCCH analysis treats character classification errors not only as model
+failures but as structured evidence about recurring visual relationships
+between Ancient Greek letterforms. Pairwise confusion patterns are therefore
+examined alongside robustness analyses rather than interpreted solely through
+aggregate recognition accuracy.
 
 ## Quick start: export embeddings
 
 ```bash
 python scripts/extract_representations.py data/palitchar/cliplets --output palitchar_representations.csv
 ```
-
 ## Citation
+
+This repository supports two related publications. Please cite the relevant work
+for the resources or analyses you use.
+
+### ICDAR 2026
 
 ```bibtex
 @inproceedings{pavlopoulos2026diachronic,
@@ -177,8 +356,34 @@ python scripts/extract_representations.py data/palitchar/cliplets --output palit
 }
 ```
 
+### ACM JOCCH — to appear
+
+```bibtex
+@article{platanou2026graphic,
+  author  = {Platanou, Paraskevi and
+             Ferretti, Lavinia and
+             Marthot-Santaniello, Isabelle and
+             De Gregorio, Giuseppe and
+             Barbakos, Spiros and
+             Konstantinidou, Maria and
+             Paparrigopoulou, Asimina and
+             Pavlopoulos, John},
+  title   = {Graphic Compensation in Ancient Greek Documentary Hands:
+             A Computational Paleographic Analysis from Handwritten Character Recognition},
+  journal = {ACM Journal on Computing and Cultural Heritage},
+  year    = {2026},
+  note    = {To appear}
+}
+```
 ## License
 
-Code and datasets are released under **CC BY 4.0** (see [`LICENSE`](LICENSE)).
+The code and datasets distributed directly through this repository are released
+under **CC BY 4.0** (see [`LICENSE`](LICENSE)).
+
+The final JOCCH ConvNeXt-V2 checkpoint and associated embedding artifacts are
+distributed separately through the
+[Hugging Face Model Hub](https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch).
+
 The datasets build on Hell-Date and on material from securely dated papyri and
-manuscripts; please also cite the originating resources.
+manuscripts; users should also cite the originating datasets and resources
+where applicable.
