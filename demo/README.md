@@ -1,8 +1,6 @@
 # Greek Letter Embedding Explorer
 
-Free Streamlit deployment for the JOCCH interactive demonstrator.
-
-The large final model and embedding artifacts are downloaded from:
+The ConvNext model used in the study and embedding artifacts are downloaded from:
 
 https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch
 
@@ -12,5 +10,3 @@ https://huggingface.co/pplatanou/greek-letter-convnextv2-jocch
 pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
-
-No Google Drive path or credential is used by the deployed app.
